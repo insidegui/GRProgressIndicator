@@ -1,0 +1,353 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DDD88F4E185B728300DA97A6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDD88F4D185B728300DA97A6 /* QuartzCore.framework */; };
+		DDD88F54185B991C00DA97A6 /* GRProgressIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD88F52185B991C00DA97A6 /* GRProgressIndicator.m */; };
+		F4BFA2A5185B269700F75999 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BFA2A4185B269700F75999 /* Cocoa.framework */; };
+		F4BFA2AF185B269700F75999 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4BFA2AD185B269700F75999 /* InfoPlist.strings */; };
+		F4BFA2B1185B269700F75999 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BFA2B0185B269700F75999 /* main.m */; };
+		F4BFA2B5185B269700F75999 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F4BFA2B3185B269700F75999 /* Credits.rtf */; };
+		F4BFA2B8185B269700F75999 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BFA2B7185B269700F75999 /* AppDelegate.m */; };
+		F4BFA2BB185B269700F75999 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BFA2B9185B269700F75999 /* MainMenu.xib */; };
+		F4BFA2BD185B269700F75999 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4BFA2BC185B269700F75999 /* Images.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		DDD88F4D185B728300DA97A6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		DDD88F51185B991C00DA97A6 /* GRProgressIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRProgressIndicator.h; sourceTree = "<group>"; };
+		DDD88F52185B991C00DA97A6 /* GRProgressIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRProgressIndicator.m; sourceTree = "<group>"; };
+		DDD88F53185B991C00DA97A6 /* GRProgressIndicatorThemes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRProgressIndicatorThemes.h; sourceTree = "<group>"; };
+		F4BFA2A1185B269700F75999 /* Progressbar Fun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Progressbar Fun.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4BFA2A4185B269700F75999 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		F4BFA2A7185B269700F75999 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		F4BFA2A8185B269700F75999 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F4BFA2A9185B269700F75999 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F4BFA2AC185B269700F75999 /* Progressbar Fun-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Progressbar Fun-Info.plist"; sourceTree = "<group>"; };
+		F4BFA2AE185B269700F75999 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F4BFA2B0185B269700F75999 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F4BFA2B2185B269700F75999 /* Progressbar Fun-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Progressbar Fun-Prefix.pch"; sourceTree = "<group>"; };
+		F4BFA2B4185B269700F75999 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		F4BFA2B6185B269700F75999 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F4BFA2B7185B269700F75999 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F4BFA2BA185B269700F75999 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		F4BFA2BC185B269700F75999 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F4BFA2C3185B269700F75999 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		F4BFA2DB185B58A600F75999 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F4BFA29E185B269700F75999 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDD88F4E185B728300DA97A6 /* QuartzCore.framework in Frameworks */,
+				F4BFA2A5185B269700F75999 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DDD88F50185B991C00DA97A6 /* GRProgressIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				DDD88F51185B991C00DA97A6 /* GRProgressIndicator.h */,
+				DDD88F52185B991C00DA97A6 /* GRProgressIndicator.m */,
+				DDD88F53185B991C00DA97A6 /* GRProgressIndicatorThemes.h */,
+			);
+			path = GRProgressIndicator;
+			sourceTree = SOURCE_ROOT;
+		};
+		F4BFA298185B269700F75999 = {
+			isa = PBXGroup;
+			children = (
+				F4BFA2AA185B269700F75999 /* Progressbar Fun */,
+				F4BFA2A3185B269700F75999 /* Frameworks */,
+				F4BFA2A2185B269700F75999 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F4BFA2A2185B269700F75999 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F4BFA2A1185B269700F75999 /* Progressbar Fun.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F4BFA2A3185B269700F75999 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DDD88F4D185B728300DA97A6 /* QuartzCore.framework */,
+				F4BFA2DB185B58A600F75999 /* CoreVideo.framework */,
+				F4BFA2A4185B269700F75999 /* Cocoa.framework */,
+				F4BFA2C3185B269700F75999 /* XCTest.framework */,
+				F4BFA2A6185B269700F75999 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F4BFA2A6185B269700F75999 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F4BFA2A7185B269700F75999 /* AppKit.framework */,
+				F4BFA2A8185B269700F75999 /* CoreData.framework */,
+				F4BFA2A9185B269700F75999 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		F4BFA2AA185B269700F75999 /* Progressbar Fun */ = {
+			isa = PBXGroup;
+			children = (
+				DDD88F50185B991C00DA97A6 /* GRProgressIndicator */,
+				F4BFA2B6185B269700F75999 /* AppDelegate.h */,
+				F4BFA2B7185B269700F75999 /* AppDelegate.m */,
+				F4BFA2B9185B269700F75999 /* MainMenu.xib */,
+				F4BFA2BC185B269700F75999 /* Images.xcassets */,
+				F4BFA2AB185B269700F75999 /* Supporting Files */,
+			);
+			path = "Progressbar Fun";
+			sourceTree = "<group>";
+		};
+		F4BFA2AB185B269700F75999 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F4BFA2AC185B269700F75999 /* Progressbar Fun-Info.plist */,
+				F4BFA2AD185B269700F75999 /* InfoPlist.strings */,
+				F4BFA2B0185B269700F75999 /* main.m */,
+				F4BFA2B2185B269700F75999 /* Progressbar Fun-Prefix.pch */,
+				F4BFA2B3185B269700F75999 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F4BFA2A0185B269700F75999 /* Progressbar Fun */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4BFA2D2185B269700F75999 /* Build configuration list for PBXNativeTarget "Progressbar Fun" */;
+			buildPhases = (
+				F4BFA29D185B269700F75999 /* Sources */,
+				F4BFA29E185B269700F75999 /* Frameworks */,
+				F4BFA29F185B269700F75999 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Progressbar Fun";
+			productName = "Progressbar Fun";
+			productReference = F4BFA2A1185B269700F75999 /* Progressbar Fun.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F4BFA299185B269700F75999 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Guilherme Rambo";
+			};
+			buildConfigurationList = F4BFA29C185B269700F75999 /* Build configuration list for PBXProject "Progressbar Fun" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F4BFA298185B269700F75999;
+			productRefGroup = F4BFA2A2185B269700F75999 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F4BFA2A0185B269700F75999 /* Progressbar Fun */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F4BFA29F185B269700F75999 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4BFA2AF185B269700F75999 /* InfoPlist.strings in Resources */,
+				F4BFA2BD185B269700F75999 /* Images.xcassets in Resources */,
+				F4BFA2B5185B269700F75999 /* Credits.rtf in Resources */,
+				F4BFA2BB185B269700F75999 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F4BFA29D185B269700F75999 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4BFA2B8185B269700F75999 /* AppDelegate.m in Sources */,
+				DDD88F54185B991C00DA97A6 /* GRProgressIndicator.m in Sources */,
+				F4BFA2B1185B269700F75999 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F4BFA2AD185B269700F75999 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4BFA2AE185B269700F75999 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F4BFA2B3185B269700F75999 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4BFA2B4185B269700F75999 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		F4BFA2B9185B269700F75999 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4BFA2BA185B269700F75999 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F4BFA2D0185B269700F75999 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F4BFA2D1185B269700F75999 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		F4BFA2D3185B269700F75999 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Progressbar Fun/Progressbar Fun-Prefix.pch";
+				INFOPLIST_FILE = "Progressbar Fun/Progressbar Fun-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F4BFA2D4185B269700F75999 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Progressbar Fun/Progressbar Fun-Prefix.pch";
+				INFOPLIST_FILE = "Progressbar Fun/Progressbar Fun-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F4BFA29C185B269700F75999 /* Build configuration list for PBXProject "Progressbar Fun" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4BFA2D0185B269700F75999 /* Debug */,
+				F4BFA2D1185B269700F75999 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4BFA2D2185B269700F75999 /* Build configuration list for PBXNativeTarget "Progressbar Fun" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4BFA2D3185B269700F75999 /* Debug */,
+				F4BFA2D4185B269700F75999 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F4BFA299185B269700F75999 /* Project object */;
+}
