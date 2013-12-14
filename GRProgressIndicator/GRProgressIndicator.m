@@ -46,6 +46,9 @@
     NSImage *_bezelBottomLeftCorner;
     NSImage *_bezelBottomEdgeFill;
     NSImage *_bezelBottomRightCorner;
+    NSShadow *_progressBarInnerShadow;
+    NSGradient *_progressBarGradient;
+    NSGradient *_progressBarLineGradient;
     
     // theme colors
     NSColor *_gradientColor0;
@@ -95,6 +98,7 @@
 {
     _theme = theme;
     [self setupTheme];
+    _progressBarGradient = nil;
 }
 
 // set up instance variables according to the current theme
@@ -222,6 +226,8 @@
 
 - (void)windowKeyChanged:(NSNotification *)notification
 {
+    _progressBarGradient = nil;
+    
     // we avoid calling setNeedsDisplay: while animation is on to prevent glitches
     if(!_animating) [self setNeedsDisplay:YES];
 }
@@ -334,53 +340,54 @@
     NSRect progressBarRect = [self progressBarRect];
     
     // the progress bar innner shadow
-    NSShadow *shadow = [[NSShadow alloc] init];
-    
-    [shadow setShadowOffset: NSMakeSize(0.1, -1.1)];
-    [shadow setShadowBlurRadius: 1];
-    
-    // the progress bar gradient
-    NSGradient *gradient;
+    if (!_progressBarInnerShadow) {
+        _progressBarInnerShadow = [[NSShadow alloc] init];
+        
+        [_progressBarInnerShadow setShadowOffset: NSMakeSize(0.1, -1.1)];
+        [_progressBarInnerShadow setShadowBlurRadius: 1];
+    }
     
     // determine the correct gradient and shadow colors based on
     // the window's key state, the system's appearance preferences and current theme
-    if ([self.window isKeyWindow]) {
-        if ([NSColor currentControlTint] == NSGraphiteControlTint) {
-            [shadow setShadowColor: kProgressBarGraphiteInnerShadowColor];
-            
-            gradient = [[NSGradient alloc] initWithColorsAndLocations:
-                        _graphiteGradientColor0, 0.0,
-                        _graphiteGradientColor1, 0.48,
-                        _graphiteGradientColor2, 0.49,
-                        _graphiteGradientColor3, 0.82,
-                        _graphiteGradientColor4, 1.0, nil];
+    if(!_progressBarGradient) {
+        if ([self.window isKeyWindow]) {
+            if ([NSColor currentControlTint] == NSGraphiteControlTint) {
+                [_progressBarInnerShadow setShadowColor: kProgressBarGraphiteInnerShadowColor];
+                
+                _progressBarGradient = [[NSGradient alloc] initWithColorsAndLocations:
+                            _graphiteGradientColor0, 0.0,
+                            _graphiteGradientColor1, 0.48,
+                            _graphiteGradientColor2, 0.49,
+                            _graphiteGradientColor3, 0.82,
+                            _graphiteGradientColor4, 1.0, nil];
+            } else {
+                [_progressBarInnerShadow setShadowColor: kProgressBarInnerShadowColor];
+                
+                _progressBarGradient = [[NSGradient alloc] initWithColorsAndLocations:
+                            _gradientColor0, 0.0,
+                            _gradientColor1, 0.48,
+                            _gradientColor2, 0.49,
+                            _gradientColor3, 0.82,
+                            _gradientColor4, 1.0, nil];
+            }
         } else {
-            [shadow setShadowColor: kProgressBarInnerShadowColor];
+            [_progressBarInnerShadow setShadowColor: kProgressBarInnerShadowColor];
             
-            gradient = [[NSGradient alloc] initWithColorsAndLocations:
-                        _gradientColor0, 0.0,
-                        _gradientColor1, 0.48,
-                        _gradientColor2, 0.49,
-                        _gradientColor3, 0.82,
-                        _gradientColor4, 1.0, nil];
+            _progressBarGradient = [[NSGradient alloc] initWithColorsAndLocations:
+                        _inactiveGradientColor0, 0.0,
+                        _inactiveGradientColor1, 0.48,
+                        _inactiveGradientColor2, 0.49,
+                        _inactiveGradientColor3, 1.0, nil];
         }
-    } else {
-        [shadow setShadowColor: kProgressBarInnerShadowColor];
-        
-        gradient = [[NSGradient alloc] initWithColorsAndLocations:
-                    _inactiveGradientColor0, 0.0,
-                    _inactiveGradientColor1, 0.48,
-                    _inactiveGradientColor2, 0.49,
-                    _inactiveGradientColor3, 1.0, nil];
     }
     
     // the progress bar rectangle
     NSBezierPath *rectanglePath = [NSBezierPath bezierPathWithRect:progressBarRect];
-    [gradient drawInBezierPath: rectanglePath angle: -90];
+    [_progressBarGradient drawInBezierPath: rectanglePath angle: -90];
     
     // this huge code section is used to draw a tiny whiteish inner shadow
-    NSRect roundedRectangleBorderRect = NSInsetRect([rectanglePath bounds], -shadow.shadowBlurRadius, -shadow.shadowBlurRadius);
-    roundedRectangleBorderRect = NSOffsetRect(roundedRectangleBorderRect, -shadow.shadowOffset.width, -shadow.shadowOffset.height);
+    NSRect roundedRectangleBorderRect = NSInsetRect([rectanglePath bounds], -_progressBarInnerShadow.shadowBlurRadius, -_progressBarInnerShadow.shadowBlurRadius);
+    roundedRectangleBorderRect = NSOffsetRect(roundedRectangleBorderRect, -_progressBarInnerShadow.shadowOffset.width, -_progressBarInnerShadow.shadowOffset.height);
     roundedRectangleBorderRect = NSInsetRect(NSUnionRect(roundedRectangleBorderRect, [rectanglePath bounds]), -1, -1);
     
     NSBezierPath* roundedRectangleNegativePath = [NSBezierPath bezierPathWithRect: roundedRectangleBorderRect];
@@ -389,7 +396,7 @@
     
     [NSGraphicsContext saveGraphicsState];
     {
-        NSShadow* shadowWithOffset = [shadow copy];
+        NSShadow* shadowWithOffset = [_progressBarInnerShadow copy];
         CGFloat xOffset = shadowWithOffset.shadowOffset.width + round(roundedRectangleBorderRect.size.width);
         CGFloat yOffset = shadowWithOffset.shadowOffset.height;
         shadowWithOffset.shadowOffset = NSMakeSize(xOffset + copysign(0.1, xOffset), yOffset + copysign(0.1, yOffset));
@@ -404,11 +411,10 @@
     
     // draw line after progress bar
 
-    NSGradient *gradient2 = [[NSGradient alloc] initWithStartingColor: kProgressBarProgressLineGradient0 endingColor: kProgressBarProgressLineGradient1];
+    if(!_progressBarLineGradient) _progressBarLineGradient = [[NSGradient alloc] initWithStartingColor: kProgressBarProgressLineGradient0 endingColor: kProgressBarProgressLineGradient1];
 
     NSBezierPath *progressLinePath = [NSBezierPath bezierPathWithRect: NSMakeRect(NSWidth(progressBarRect)+1, progressBarRect.origin.y, 1, NSHeight(progressBarRect))];
-
-    [gradient2 drawInBezierPath: progressLinePath angle: 90];
+    [_progressBarLineGradient drawInBezierPath: progressLinePath angle: 90];
 }
 
 
@@ -416,13 +422,12 @@
 - (void)drawAnimationStep
 {
     // initialize colors and gradient only once
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+    if(!_particleGrad1) {
         _particleGrad1 = [NSColor colorWithCalibratedRed: 1 green: 1 blue: 1 alpha: 0.07];
         _particleGrad2 = [NSColor colorWithCalibratedRed: 1 green: 1 blue: 1 alpha: 0];
         _particleGradient = [[NSGradient alloc] initWithStartingColor: _particleGrad1 endingColor: _particleGrad2];
-    });
-    
+    }
+
     // get progress rect and check if it's empty
     NSRect progressBarRect = [self progressBarRect];
     NSBezierPath *progressPath = [NSBezierPath bezierPathWithRoundedRect:progressBarRect xRadius:kProgressBarCornerRadius yRadius:kProgressBarCornerRadius];
