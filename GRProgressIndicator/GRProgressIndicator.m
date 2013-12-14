@@ -24,6 +24,10 @@
 // tweak this to change animation behavior
 #define kProgressIndicatorAnimationSleepInterval 0.02
 
+// defines the duration of the animation used
+// when doubleValue is changed
+#define kDoubleValueAnimationDuration 0.3
+
 @interface GRProgressIndicator ()
 
 @property (nonatomic, assign) double internalDoubleValue;
@@ -261,7 +265,7 @@
     // our internalDoubleValue is used to make the value increments smoother
     if ([key isEqualToString:@"internalDoubleValue"]) {
         CABasicAnimation *animation = [CABasicAnimation animation];
-        animation.duration = 0.3;
+        animation.duration = kDoubleValueAnimationDuration;
         
         return animation;
     }
