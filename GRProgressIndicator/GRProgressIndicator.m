@@ -316,7 +316,7 @@
     NSDrawNinePartImage(dirtyRect, _bezelTopLeftCorner, _bezelTopEdgeFill, _bezelTopRightCorner, _bezelLeftEdgeFill, _bezelCenterFill, _bezelRightEdgeFill, _bezelBottomLeftCorner, _bezelBottomEdgeFill, _bezelBottomRightCorner, NSCompositeSourceOver, 1.0, NO);
     
     // this will limit our drawing to the inside of the bezel
-    NSRect clipRect = NSMakeRect(1, 2, NSWidth(self.frame)-2, NSHeight(self.frame));
+    NSRect clipRect = NSMakeRect(1, 2, NSWidth(self.frame)-2, NSHeight([self progressBarRect]));
     [[NSBezierPath bezierPathWithRoundedRect:clipRect xRadius:kProgressBarCornerRadius yRadius:kProgressBarCornerRadius] addClip];
     
     // draw progress bar
