@@ -1,6 +1,6 @@
 //
 //  GRProgressIndicator.m
-//  Progressbar Fun
+//  GRProgressIndicator
 //
 //  Created by Guilherme Rambo on 13/12/13.
 //  Copyright (c) 2013 Guilherme Rambo. All rights reserved.
@@ -57,7 +57,7 @@
     NSColor *_inactiveGradientColor3;
     NSColor *_inactiveGradientColor4;
     
-    // define if we are currently animating or not
+    // defines if we are currently animating or not
     BOOL _animating;
     
     // animation counter
@@ -87,6 +87,10 @@
 // set up instance variables according to the current theme
 - (void)setupTheme
 {
+    // by default the inactive state and graphite look don't change
+    // for each theme, but this can be changed by creating new constants and
+    // using them here, that's why I've decided to keep setting "_graphiteGradientColor..."
+    // and "_inactiveGradientColor..." in all cases
     switch (self.theme) {
         case GRProgressIndicatorThemeForceGraphite:
             _gradientColor0 = kProgressBarGraphiteGradientColor0;
@@ -205,7 +209,7 @@
 
 - (void)windowKeyChanged:(NSNotification *)notification
 {
-    // we avoid calling setNeedsDisplay: while animation is on to avoid glitches
+    // we avoid calling setNeedsDisplay: while animation is on to prevent glitches
     if(!_animating) [self setNeedsDisplay:YES];
 }
 
@@ -273,7 +277,7 @@
         // we are now animating
         _animating = YES;
         
-        // animation look
+        // animation loop
         while (_animating) {
             // the animation happens until it's walked back the width of a particle,
             // when this is the case, the frame will look the same as in the start, so we go back and loop
@@ -326,7 +330,7 @@
     NSGradient *gradient;
     
     // determine the correct gradient and shadow colors based on
-    // the window's key state and the system's appearance preferences
+    // the window's key state, the system's appearance preferences and current theme
     if ([self.window isKeyWindow]) {
         if ([NSColor currentControlTint] == NSGraphiteControlTint) {
             [shadow setShadowColor: kProgressBarGraphiteInnerShadowColor];

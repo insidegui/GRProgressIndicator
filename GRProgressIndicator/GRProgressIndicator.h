@@ -1,6 +1,6 @@
 //
 //  GRProgressIndicator.h
-//  Progressbar Fun
+//  GRProgressIndicator
 //
 //  Created by Guilherme Rambo on 13/12/13.
 //  Copyright (c) 2013 Guilherme Rambo. All rights reserved.
