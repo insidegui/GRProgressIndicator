@@ -3,12 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "pi_startCap.png"
+      "filename" : "pi_bottomRight.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "pi_startCap@2x.png"
+      "filename" : "pi_bottomRight@2x.png"
     }
   ],
   "info" : {

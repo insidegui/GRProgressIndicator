@@ -10,9 +10,6 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-// progress bar inner height, don't change
-#define kProgressBarHeight 16.0
-
 // progress bar corner radius
 #define kProgressBarCornerRadius 3.0
 
@@ -37,12 +34,18 @@
 @implementation GRProgressIndicator
 {
     // cached data
-    NSImage *_bezelStartCap;
-    NSImage *_bezelCenterFill;
-    NSImage *_bezelEndCap;
     NSColor *_particleGrad1;
     NSColor *_particleGrad2;
     NSGradient *_particleGradient;
+    NSImage *_bezelTopLeftCorner;
+    NSImage *_bezelTopEdgeFill;
+    NSImage *_bezelTopRightCorner;
+    NSImage *_bezelLeftEdgeFill;
+    NSImage *_bezelCenterFill;
+    NSImage *_bezelRightEdgeFill;
+    NSImage *_bezelBottomLeftCorner;
+    NSImage *_bezelBottomEdgeFill;
+    NSImage *_bezelBottomRightCorner;
     
     // theme colors
     NSColor *_gradientColor0;
@@ -73,9 +76,15 @@
     self = [super initWithFrame:frame];
     if (self) {
         // initialize images used to draw our bezel
-        _bezelStartCap = [NSImage imageNamed:@"pi_startCap"];
+        _bezelTopLeftCorner = [NSImage imageNamed:@"pi_topLeft"];
+        _bezelTopEdgeFill = [NSImage imageNamed:@"pi_topFill"];
+        _bezelTopRightCorner = [NSImage imageNamed:@"pi_topRight"];
+        _bezelLeftEdgeFill = [NSImage imageNamed:@"pi_leftFill"];
         _bezelCenterFill = [NSImage imageNamed:@"pi_centerFill"];
-        _bezelEndCap = [NSImage imageNamed:@"pi_endCap"];
+        _bezelRightEdgeFill = [NSImage imageNamed:@"pi_rightFill"];
+        _bezelBottomLeftCorner = [NSImage imageNamed:@"pi_bottomLeft"];
+        _bezelBottomEdgeFill = [NSImage imageNamed:@"pi_bottomFill"];
+        _bezelBottomRightCorner = [NSImage imageNamed:@"pi_bottomRight"];
         
         self.theme = GRProgressIndicatorThemeDefault;
     }
@@ -241,7 +250,7 @@
 - (NSRect)progressBarRect
 {
     // calculate the rect of the progress bar inside based on the current doubleValue
-    return NSMakeRect(1, 2, round((self.internalDoubleValue/100)*NSWidth(self.frame)), kProgressBarHeight);
+    return NSMakeRect(1, 2, round((self.internalDoubleValue/100)*NSWidth(self.frame)), NSHeight(self.frame)-3);
 }
 
 - (void)startAnimation:(id)sender
@@ -303,11 +312,11 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-    // draw bezel using three images
-    NSDrawThreePartImage(dirtyRect, _bezelStartCap, _bezelCenterFill, _bezelEndCap, NO, NSCompositeSourceOver, 1.0, NO);
+    // draw bezel using nine images
+    NSDrawNinePartImage(dirtyRect, _bezelTopLeftCorner, _bezelTopEdgeFill, _bezelTopRightCorner, _bezelLeftEdgeFill, _bezelCenterFill, _bezelRightEdgeFill, _bezelBottomLeftCorner, _bezelBottomEdgeFill, _bezelBottomRightCorner, NSCompositeSourceOver, 1.0, NO);
     
     // this will limit our drawing to the inside of the bezel
-    NSRect clipRect = NSMakeRect(1, 2, NSWidth(self.frame)-2, kProgressBarHeight);
+    NSRect clipRect = NSMakeRect(1, 2, NSWidth(self.frame)-2, NSHeight(self.frame));
     [[NSBezierPath bezierPathWithRoundedRect:clipRect xRadius:kProgressBarCornerRadius yRadius:kProgressBarCornerRadius] addClip];
     
     // draw progress bar
@@ -423,7 +432,7 @@
     // limits the drawing of the particles to be only inside the progress area
     [progressPath addClip];
     
-    // calculate how many particles we can fit inside the progress rect
+    // calculate how many particles we can fit inside the progress rect and add some extra for good luck :P
     int particlePitch = round(NSWidth(progressBarRect)/kParticleWidth)+2;
     
     // value used to calculate the X position of a particle
@@ -440,7 +449,7 @@
         [particlePath addClip];
         
         // draw particle gradient
-        NSPoint gradientPoint = NSMakePoint(particleX+17, 8);
+        NSPoint gradientPoint = NSMakePoint(particleX+17, NSHeight(self.frame)/2.0);
         NSGradientDrawingOptions options = NSGradientDrawsBeforeStartingLocation | NSGradientDrawsAfterEndingLocation;
         [_particleGradient drawFromCenter: gradientPoint radius: 0
                         toCenter: gradientPoint radius: 12.72

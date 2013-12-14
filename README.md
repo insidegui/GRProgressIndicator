@@ -6,7 +6,7 @@ This is a reimplementation of NSProgressIndicator with some customization suppor
 
 Place a custom view in your xib and set its class to "GRProgressIndicator"
 
-IMPORTANT: the height of this view *MUST* be 19.0, other heights are not currently supported
+IMPORTANT: this view will work best if It's height is 19 or less, you can use bigger heights but the gradient may look strange
 
 ## Changing the look
 
