@@ -650,19 +650,19 @@
         <window title="Progressbar Fun" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="371">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="480" height="198"/>
+            <rect key="contentRect" x="335" y="390" width="480" height="224"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
-            <value key="minSize" type="size" width="480" height="198"/>
+            <value key="minSize" type="size" width="480" height="224"/>
             <view key="contentView" id="372">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="198"/>
+                <rect key="frame" x="0.0" y="0.0" width="480" height="224"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <progressIndicator maxValue="100" style="bar" id="drB-ot-Jgj">
-                        <rect key="frame" x="20" y="134" width="374" height="20"/>
+                        <rect key="frame" x="20" y="160" width="374" height="20"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     </progressIndicator>
                     <button verticalHuggingPriority="750" id="g4h-0L-zw4">
-                        <rect key="frame" x="396" y="127" width="70" height="32"/>
+                        <rect key="frame" x="396" y="153" width="70" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Start" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1Af-vZ-jUy">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -673,11 +673,11 @@
                         </connections>
                     </button>
                     <customView id="nZE-RK-9Ok" customClass="GRProgressIndicator">
-                        <rect key="frame" x="20" y="60" width="374" height="19"/>
+                        <rect key="frame" x="20" y="86" width="374" height="19"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     </customView>
                     <button verticalHuggingPriority="750" id="bOa-j6-CNy">
-                        <rect key="frame" x="396" y="53" width="70" height="32"/>
+                        <rect key="frame" x="396" y="79" width="70" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Start" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Mbw-Ff-jjG">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -688,7 +688,7 @@
                         </connections>
                     </button>
                     <popUpButton verticalHuggingPriority="750" id="au6-UD-DEr">
-                        <rect key="frame" x="193" y="17" width="204" height="26"/>
+                        <rect key="frame" x="193" y="43" width="204" height="26"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <popUpButtonCell key="cell" type="push" title="Default" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="2Cm-gi-vMO" id="5Dt-Dn-VKm">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -709,7 +709,7 @@
                         </connections>
                     </popUpButton>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="gyj-mP-LZQ">
-                        <rect key="frame" x="17" y="24" width="173" height="17"/>
+                        <rect key="frame" x="17" y="50" width="173" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Select progress bar theme:" id="CfC-Bb-TjF">
                             <font key="font" metaFont="system"/>
@@ -718,7 +718,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="fgo-uL-zBd">
-                        <rect key="frame" x="17" y="161" width="183" height="17"/>
+                        <rect key="frame" x="17" y="187" width="183" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Standard Progress Indicator:" id="wSt-g8-Tgj">
                             <font key="font" metaFont="system"/>
@@ -727,7 +727,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="6Vn-hI-ZgG">
-                        <rect key="frame" x="17" y="87" width="176" height="17"/>
+                        <rect key="frame" x="17" y="113" width="176" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Custom Progress Indicator:" id="6Go-6e-LKw">
                             <font key="font" metaFont="system"/>
@@ -735,6 +735,17 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button id="JnH-cj-q82">
+                        <rect key="frame" x="18" y="18" width="378" height="18"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Indeterminate" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="DeD-lH-taP">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="494" name="value" keyPath="grProgress.indeterminate" id="FGW-V3-rSo"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
         </window>

@@ -49,6 +49,11 @@
     NSShadow *_progressBarInnerShadow;
     NSGradient *_progressBarGradient;
     NSGradient *_progressBarLineGradient;
+    NSColor *_indeterminateGradientColor0;
+    NSColor *_indeterminateGradientColor1;
+    NSColor *_indeterminateGradientColor2;
+    NSColor *_indeterminateGradientColor3;
+    NSGradient *_indeterminateGradient;
     
     // theme colors
     NSColor *_gradientColor0;
@@ -89,7 +94,11 @@
         _bezelBottomEdgeFill = [NSImage imageNamed:@"pi_bottomFill"];
         _bezelBottomRightCorner = [NSImage imageNamed:@"pi_bottomRight"];
         
+        // setup defaults
         self.theme = GRProgressIndicatorThemeDefault;
+        self.minValue = 0;
+        self.maxValue = 100;
+        self.doubleValue = 0;
     }
     return self;
 }
@@ -234,8 +243,9 @@
 
 - (void)setDoubleValue:(double)doubleValue
 {
-    // going backwards doesn't animate :)
-    if (doubleValue > _doubleValue) {
+    // the setting of the doubleValue is not animated if the new value is less than
+    // the current value and if the PI is indeterminate
+    if (doubleValue > _doubleValue && !self.isIndeterminate) {
         self.animator.internalDoubleValue = doubleValue;
     } else {
         self.internalDoubleValue = doubleValue;
@@ -253,10 +263,23 @@
     if(!_animating) [self setNeedsDisplay:YES];
 }
 
+- (void)setIndeterminate:(BOOL)indeterminate
+{
+    _indeterminate = indeterminate;
+}
+
+// calculate the rect of the progress bar inside based on the current doubleValue
 - (NSRect)progressBarRect
 {
-    // calculate the rect of the progress bar inside based on the current doubleValue
-    return NSMakeRect(1, 2, round((self.internalDoubleValue/100)*NSWidth(self.frame)), NSHeight(self.frame)-3);
+    double scaledDoubleValue;
+    
+    if (_indeterminate) {
+        scaledDoubleValue = _maxValue;
+    } else {
+        scaledDoubleValue = _internalDoubleValue*(_maxValue-_minValue)/_maxValue-_minValue;
+    }
+    
+    return NSMakeRect(1, 2, round(scaledDoubleValue/_maxValue*NSWidth(self.frame)), NSHeight(self.frame)-3);
 }
 
 - (void)startAnimation:(id)sender
@@ -329,7 +352,13 @@
     [self drawProgressBar];
     
     // draw particle animation step if needed
-    if(_animating) [self drawAnimationStep];
+    if(_animating) {
+        if (!self.isIndeterminate) {
+            [self drawAnimationStep];
+        } else {
+            [self drawIndeterminateAnimationStep];
+        }
+    }
 }
 
 // this method is responsible of drawing the progress bar itself
@@ -461,6 +490,44 @@
                          options: options];
         
         [NSGraphicsContext restoreGraphicsState];
+    }
+}
+
+// this method is responsible of drawing the stripes animation when the PI is indeterminate
+- (void)drawIndeterminateAnimationStep
+{
+#define kIndeterminateParticleWidth 34.0
+#define kIndeterminateParticleSpacing 16.0
+    
+    if(!_indeterminateGradient) {
+        _indeterminateGradientColor0 = [NSColor colorWithCalibratedRed: 0.917 green: 0.917 blue: 0.916 alpha: 1];
+        _indeterminateGradientColor1 = [NSColor colorWithCalibratedRed: 1 green: 1 blue: 1 alpha: 1];
+        _indeterminateGradientColor2 = [NSColor colorWithCalibratedRed: 0.951 green: 0.951 blue: 0.951 alpha: 1];
+        _indeterminateGradientColor3 = [NSColor colorWithCalibratedRed: 0.907 green: 0.907 blue: 0.907 alpha: 1];
+        
+        _indeterminateGradient = [[NSGradient alloc] initWithColorsAndLocations:
+                                  _indeterminateGradientColor0, 0.0,
+                                  _indeterminateGradientColor1, 0.48,
+                                  _indeterminateGradientColor2, 0.49,
+                                  _indeterminateGradientColor3, 1.0, nil];
+    }
+    
+    NSRect progressBarRect = [self progressBarRect];
+    int particlePitch = round(NSWidth(progressBarRect)/kIndeterminateParticleWidth)+2;
+
+    CGFloat particleDelta = kIndeterminateParticleWidth+kIndeterminateParticleSpacing-kIndeterminateParticleWidth/2;
+    
+    for (int i = 0; i < particlePitch; i++) {
+        CGFloat particleX = (i*particleDelta)+_currentAnimationStep;
+        
+        NSBezierPath *particlePath = [NSBezierPath bezierPath];
+        [particlePath moveToPoint: NSMakePoint(particleX-10, NSHeight(self.frame))];
+        [particlePath lineToPoint: NSMakePoint(particleX+kIndeterminateParticleWidth/2-30, NSHeight(self.frame))];
+        [particlePath lineToPoint: NSMakePoint(particleX+kIndeterminateParticleWidth-30, 0)];
+        [particlePath lineToPoint: NSMakePoint(particleX+kIndeterminateParticleWidth/2-30, 0)];
+        [particlePath lineToPoint: NSMakePoint(particleX-30, NSHeight(self.frame))];
+        [particlePath closePath];
+        [_indeterminateGradient drawInBezierPath:particlePath angle:-90];
     }
 }
 
