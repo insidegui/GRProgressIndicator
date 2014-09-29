@@ -327,16 +327,16 @@
 
             _currentAnimationStep++;
             
-            // render the view
-            [self setNeedsDisplay:YES];
+            // render the view in the main thread
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self setNeedsDisplay:YES];
+            });
             
             // delay to control framerate
             [NSThread sleepForTimeInterval:kProgressIndicatorAnimationSleepInterval];
         }
         
     }
-    
-    [NSThread exit];
 }
 
 - (void)drawRect:(NSRect)dirtyRect
