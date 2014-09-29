@@ -274,12 +274,16 @@
     double scaledDoubleValue;
     
     if (_indeterminate) {
-        scaledDoubleValue = _maxValue;
+        scaledDoubleValue = 1.0; // 100%
     } else {
-        scaledDoubleValue = _internalDoubleValue*(_maxValue-_minValue)/_maxValue-_minValue;
+        
+        // the below line is wrong.  It just multiplies internalDoubleValue by 1.0
+        // scaledDoubleValue = _internalDoubleValue*(_maxValue-_minValue)/_maxValue-_minValue;
+        
+        scaledDoubleValue = (_internalDoubleValue-_minValue)/(_maxValue-_minValue);
     }
     
-    return NSMakeRect(1, 2, round(scaledDoubleValue/_maxValue*NSWidth(self.frame)), NSHeight(self.frame)-3);
+    return NSMakeRect(1, 2, round(scaledDoubleValue*NSWidth(self.frame)), NSHeight(self.frame)-3);
 }
 
 - (void)startAnimation:(id)sender
